@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+
+    <style>
+        .deneme{
+            width: 200px;
+            height: 200px;
+            margin-bottom: 15px;
+            font-size: 32px;
+            position: relative;
+        }
+    </style>
+
+</head>
+<body>
+
+    <button id="btn">Animate</button>
+    <br><br><br>
+
+    <div id="div1" class="deneme" style="background-color: gray;">Javascript</div>
+
+    <script>
+
+        $(function () {
+            
+            $("#btn").click(function(){
+
+                $("#div1").animate({
+                    
+                    left: "200px",
+                    top: "200px", 
+                    fontSize: "64",
+                    height: "+=200"
+                    //height: "toggle" 3 saniye icinde ekrandan silecektir
+               
+                },3000); // olayların 3 saniyede gerçekleşeceğini gösterir
+                
+                $("#div1").queue(function(){
+
+                    $(this).css("background-color","yellow");
+                    $(this).dequeue();
+
+                });
+
+                $("#div1").animate({width:"400px"},3000); // ustteki islemler gerceklesir ardindan acilacaktir
+
+
+            });
+            
+            /* tel tek animate degerleri vererek 
+            $("#div1").animate({height:"500px"},3000)
+            $("#div1").animate({width:"500px"},3000)
+            $("#div1").animate({height:"200px"},3000)
+            $("#div1").animate({width:"200px"},3000)
+            bu sekilde ilk buyuyup sonra kuculecektir
+            animasyonlu sekilli bir sey ortaya cıkacaktır
+            */
+
+        });
+
+
+    </script>
+
+</body>
+</html>
